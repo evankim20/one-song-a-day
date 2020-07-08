@@ -1,0 +1,16 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html> 
+    <body> 
+        <h1>Good Morning {{.Name}},</h1>
+        <p>Your daily song to listen to is:</p>
+        <div style="text-align:center;">
+            <img src={{.Image}} >
+            <h2 style="margin-bottom:.3em;">{{.Track}}</h2>
+            <h4 style="margin-top:0;">{{.Artist}}</h4>
+            <p>https://open.spotify.com/embed/track/{{.URI}}</p>
+        </div>
+        <iframe src=https://open.spotify.com/embed/track/{{.URI}} width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </body> 
+</html>

@@ -1,4 +1,4 @@
-package server
+package api
 
 import (
 	"encoding/json"
@@ -41,6 +41,6 @@ func GetSong(token string) (spotify.Response, error) {
 	if err != nil {
 		return spotify.Response{}, err
 	}
-	fmt.Println(response)
+
 	return response, nil
 }
