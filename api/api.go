@@ -1,3 +1,4 @@
+// Package api interacts with the Spotify API and grabs and formats responses
 package api
 
 import (

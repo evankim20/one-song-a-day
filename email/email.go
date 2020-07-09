@@ -1,3 +1,4 @@
+// Package email contains funcitonality to interact and send emails to clients
 package email
 
 import (
