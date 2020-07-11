@@ -31,7 +31,7 @@ func main() {
 
 func mainTask() {
 	if ticker == nil {
-		ticker = time.NewTicker(24 * time.Second)
+		ticker = time.NewTicker(24 * time.Hour)
 	}
 	for {
 		log.Printf("Sent at %v\n", time.Now())
