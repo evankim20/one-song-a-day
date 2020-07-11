@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 	"sync"
 	"time"
 
@@ -22,10 +23,9 @@ func main() {
 	http.HandleFunc("/", server.RootHandler)
 	log.Printf("Listening on %s...\n", addr)
 	go http.ListenAndServe(addr, nil)
-
+	log.Printf("Hello %s\n", os.Getenv("CURRENT_USER"))
 	time.AfterFunc(duration(), mainTask)
 	wg.Add(1)
-	// do normal task here
 	wg.Wait()
 }
 
@@ -55,7 +55,7 @@ func mainTask() {
 
 func duration() time.Duration {
 	t := time.Now()
-	n := time.Date(t.Year(), t.Month(), t.Day(), 21, 59, 0, 0, t.Location())
+	n := time.Date(t.Year(), t.Month(), t.Day(), 8, 0, 0, 0, t.Location())
 	if t.After(n) {
 		n = n.Add(24 * time.Hour)
 	}
