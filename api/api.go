@@ -7,6 +7,8 @@ import (
 	"io/ioutil"
 	"math/rand"
 	"net/http"
+	"net/url"
+	"os"
 	"time"
 
 	"github.com/evankim20/one-song-a-day/spotify"
@@ -17,7 +19,7 @@ import (
 func GetSong(token string) (spotify.Response, error) {
 	rand.Seed(time.Now().UnixNano())
 	offset := rand.Intn(1999) + 1 // handling random offset from 1 to 2000
-	url := fmt.Sprintf("https://api.spotify.com/v1/search?q=genre%%3Ar%%26b&type=track&market=US&limit=1&offset=%d", offset)
+	url := fmt.Sprintf("https://api.spotify.com/v1/search?q=genre%%3A%s&type=track&market=US&limit=1&offset=%d", url.QueryEscape(os.Getenv("SPOTIFY_QUERY")), offset)
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
 		return spotify.Response{}, err

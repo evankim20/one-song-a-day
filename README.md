@@ -10,12 +10,8 @@ CURRENT_USER    // your name, to personalize the email
 PERSONAL_EMAIL  // email where you would like to recieve these songs
 SONG_EMAIL      // email you will use to send the song emails
 SONG_EMAIL_PASS // password of the song email
+SPOTIFY_QUERY   // what genre to query 
 ```
 
 ## Notes
 The application is defaulted to send a message at 8:00 AM your local time every 24 hours.
-
-## Upcoming Features
-- Manually set what genre of music you would like to recieve (defaulted to genre:R&B) 
-- Keep track of previously viewed songs
-- Upvote or downvote songs
