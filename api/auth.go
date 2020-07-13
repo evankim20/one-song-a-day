@@ -18,7 +18,6 @@ import (
 func getToken() (string, error) {
 	// setup as shown in: https://developer.spotify.com/documentation/general/guides/authorization-guide/
 	codes := base64.StdEncoding.EncodeToString([]byte(fmt.Sprintf("%s:%s", os.Getenv("CLIENT_ID"), os.Getenv("CLIENT_SECRET"))))
-	log.Println(os.Getenv("CLIENT_ID"))
 	url := "https://accounts.spotify.com/api/token"
 	req, err := http.NewRequest("POST", url, bytes.NewBufferString("grant_type=client_credentials"))
 	if err != nil {
