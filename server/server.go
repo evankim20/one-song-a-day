@@ -21,9 +21,8 @@ func DetermineListenAddress() (string, error) {
 // RootHandler handles the path /
 func RootHandler(w http.ResponseWriter, r *http.Request) {
 	now := time.Now()
-	// TODO: redefine hours that Kaffine calls
 	lower := time.Date(now.Year(), now.Month(), now.Day(), 15, 0, 0, 0, time.UTC)
-	upper := time.Date(now.Year(), now.Month(), now.Day(), 15, 30, 0, 0, time.UTC)
+	upper := time.Date(now.Year(), now.Month(), now.Day(), 15, 4, 0, 0, time.UTC)
 	if now.After(lower) && now.Before(upper) {
 		api.MainTask()
 		fmt.Fprintln(w, "Just sent a request!")
