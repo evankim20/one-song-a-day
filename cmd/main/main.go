@@ -2,28 +2,16 @@ package main
 
 import (
 	"log"
-	"net/http"
-	"os"
 	"sync"
 	"time"
 
 	"github.com/evankim20/one-song-a-day/api"
 	"github.com/evankim20/one-song-a-day/email"
-	"github.com/evankim20/one-song-a-day/server"
 )
 
 var ticker *time.Ticker = nil
 
 func main() {
-	// server set up
-	addr, err := server.DetermineListenAddress()
-	if err != nil {
-		log.Fatal(err)
-	}
-	http.HandleFunc("/", server.RootHandler)
-	log.Printf("Listening on %s...\n", addr)
-	go http.ListenAndServe(addr, nil)
-	log.Printf("Hello %s\n", os.Getenv("CURRENT_USER"))
 	time.AfterFunc(duration(), mainTask)
 	wg.Add(1)
 	wg.Wait()
