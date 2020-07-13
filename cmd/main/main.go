@@ -15,6 +15,7 @@ import (
 var ticker *time.Ticker = nil
 
 func main() {
+	log.Println(time.Now())
 	// server set up
 	addr, err := server.DetermineListenAddress()
 	if err != nil {
