@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -22,10 +23,15 @@ func DetermineListenAddress() (string, error) {
 func RootHandler(w http.ResponseWriter, r *http.Request) {
 	now := time.Now()
 	// TODO: CHANGE THIS TO 8 AM --> 15:00
-	lower := time.Date(now.Year(), now.Month(), now.Day(), 19, 0, 0, 0, time.UTC)
-	upper := time.Date(now.Year(), now.Month(), now.Day(), 19, 30, 0, 0, time.UTC)
+	lower := time.Date(now.Year(), now.Month(), now.Day(), 7, 0, 0, 0, time.UTC)
+	upper := time.Date(now.Year(), now.Month(), now.Day(), 7, 30, 0, 0, time.UTC)
+	log.Println(now)
+	log.Println(lower)
+	log.Println(upper)
 	if now.After(lower) && now.Before(upper) {
 		api.MainTask()
+		fmt.Fprintln(w, "Just sent a request!")
+		return
 	}
-	fmt.Fprintln(w, "One Song a Day")
+	fmt.Fprintln(w, "Not the correct time")
 }

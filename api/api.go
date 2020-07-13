@@ -56,14 +56,19 @@ func MainTask() error {
 		return err
 	}
 
+	log.Println("finished tokens")
+
 	resp, err := getSong(token)
 	if err != nil {
 		return err
 	}
 
+	log.Println("finished song")
+
 	err = email.Send(resp)
 	if err != nil {
 		return err
 	}
+	log.Println("Sent")
 	return nil
 }
